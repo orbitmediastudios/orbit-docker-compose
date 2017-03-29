@@ -1,0 +1,35 @@
+version: '2'
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - "./.data/db:/var/lib/mysql"
+    restart: always
+    ports:
+      - "3306:3306"
+    env_file:
+      - "./docker-vh/db_env.env"
+
+  web:
+    depends_on:
+      - db
+    image: orbitmedia/php:7.1-apache
+    volumes:
+      - "./:/var/www/html"
+      - "./docker-vh:/etc/apache2/sites-enabled"
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    depends_on:
+      - db
+    environment:
+      - PMA_HOST=db
+    restart: always
+    ports:
+      - "8080:80"
+    volumes:
+      - /sessions
