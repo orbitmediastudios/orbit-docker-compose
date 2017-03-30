@@ -1,4 +1,4 @@
-# Dockerfile and docker compose file
+# Docker compose file
 
 ### For development with php 7.0 and mysql 5.7
 
