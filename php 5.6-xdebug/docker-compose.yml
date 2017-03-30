@@ -1,7 +1,7 @@
 version: '2'
 services:
   db:
-    image: mysql:5.7
+    image: mysql:5.5
     volumes:
       - "./.data/db:/var/lib/mysql"
     restart: always
@@ -13,7 +13,7 @@ services:
   web:
     depends_on:
       - db
-    image: orbitmedia/php:7.1-apache-xdebug
+    image: orbitmedia/php:5.6-apache-xdebug
     volumes:
       - "./:/var/www/html"
       - "./docker-vh:/etc/apache2/sites-enabled"
@@ -23,15 +23,3 @@ services:
     restart: always
     environment:
         XDEBUG_CONFIG: "remote_host=10.254.254.254"
-
-  phpmyadmin:
-    image: phpmyadmin/phpmyadmin
-    depends_on:
-      - db
-    environment:
-      - PMA_HOST=db
-    restart: always
-    ports:
-      - "8080:80"
-    volumes:
-      - /sessions
