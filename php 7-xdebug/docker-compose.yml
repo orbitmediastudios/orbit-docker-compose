@@ -13,7 +13,7 @@ services:
   web:
     depends_on:
       - db
-    image: orbitmedia/php:7.0-apache
+    image: orbitmedia/php:7.0-apache-xdebug
     volumes:
       - "./:/var/www/html"
       - "./docker-vh:/etc/apache2/sites-enabled"
