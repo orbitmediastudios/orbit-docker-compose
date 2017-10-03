@@ -4,11 +4,10 @@ services:
     image: mysql:5.7
     volumes:
       - "./.data/db:/var/lib/mysql"
-    restart: always
     ports:
       - "3306:3306"
     env_file:
-      - "./docker-vh/db_env.env"
+      - "./docker-vh/db_env.env"`
 
   web:
     depends_on:
@@ -20,4 +19,3 @@ services:
     ports:
       - "80:80"
       - "443:443"
-    restart: always
