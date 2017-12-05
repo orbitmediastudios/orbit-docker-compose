@@ -1,6 +1,6 @@
 # Docker compose file #
 
-### For development with php 7.1 and mysql 5.7 ###
+### For development with php 7.2 and mysql 5.7 ###
 
 * You can switch mysql version if need it or replace with mariadb image. 
 * Set MYSQL_ vars in _docker-vh/db_env.env_ file
