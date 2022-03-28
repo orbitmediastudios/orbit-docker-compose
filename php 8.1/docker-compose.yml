@@ -1,9 +1,9 @@
-version: '3'
+version: '3.8'
 services:
   db:
     image: mysql/mysql-server:5.7
     volumes:
-      - "./.data/db:/var/lib/mysql"
+      - "./.data/db:/var/lib/mysql:rw"
     ports:
       - "3306:3306"
     env_file:
@@ -12,7 +12,7 @@ services:
   web:
     depends_on:
       - db
-    image: orbitmedia/php:7.4-apache
+    image: orbitmedia/php:8.1-apache
     volumes:
       - "./:/var/www/html"
       - "./docker-vh:/etc/apache2/sites-enabled"
