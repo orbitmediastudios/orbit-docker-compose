@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  db:
+    image: arm64v8/mysql:8-oracle
+    volumes:
+      - "./.data/db:/var/lib/mysql:rw"
+    ports:
+      - "3306:3306"
+    env_file:
+      - "./docker-vh/db_env.env"
+
+  web:
+    depends_on:
+      - db
+    image: orbitmedia/php:8.3-apache
+    volumes:
+      - "./:/var/www/html"
+      - "./docker-vh:/etc/apache2/sites-enabled"
+    ports:
+      - "80:80"
+      - "443:443"
