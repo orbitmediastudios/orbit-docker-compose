@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   db:
-    image: arm64v8/mysql:8-oracle
+    image: mysql:8.0.36
     volumes:
       - "./.data/db:/var/lib/mysql:rw"
     ports:
