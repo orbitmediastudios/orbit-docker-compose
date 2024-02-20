@@ -26,6 +26,7 @@ services:
       - db
     environment:
       - PMA_HOST=db
+      - UPLOAD_LIMIT=200M
     ports:
       - "8080:80"
     volumes:
